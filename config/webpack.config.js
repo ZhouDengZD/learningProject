@@ -409,12 +409,12 @@ module.exports = function (webpackEnv) {
                       },
                     },
                   ],
-                  [
-                    require.resolve('@babel/plugin-proposal-decorators'),
-                    {
-                      legacy: true
-                    }
-                  ],
+                  // [
+                  //   require.resolve('@babel/plugin-proposal-decorators'),
+                  //   {
+                  //     legacy: true
+                  //   }
+                  // ],
                   isEnvDevelopment &&
                   shouldUseReactRefresh &&
                   require.resolve('react-refresh/babel'),
