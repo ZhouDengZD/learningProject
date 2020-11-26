@@ -2,20 +2,23 @@ import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
 import {
   BrowserRouter as Router,
+  // HashRouter as Router, // 若要使用HashRouter 直接替换即可
   Switch,
   Route,
+  Redirect,
 } from "react-router-dom";
 
 import reportWebVitals from './reportWebVitals';
 
 import routerData from './config/router.js';
 
-
 ReactDOM.render(
   <Router>
     <React.StrictMode>
       <Suspense fallback={<div style={{ textAlign: 'center' }}>Loading...</div>}>
         <Switch>
+          {/* exact保证只是http://localhost:3000会重定向至导航页面 而非所有url*/}
+          <Redirect exact from="/" to="/nav" />
           {
             routerData.map(routerItem => {
               let Page = lazy(() => import(`./routes/${routerItem.component}`)); // 给匿名组件取名
