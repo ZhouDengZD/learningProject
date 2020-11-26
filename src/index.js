@@ -23,10 +23,20 @@ ReactDOM.render(
                 <Route
                   exact
                   path={routerItem.path} key={'router' + routerItem.path}
-                // render={() => <Page />}  // 法一
+                  // 法一： render
+                  // render={props => <Page {...props} />}
+
+                  // 法二：component
+                  // 会自动将three route props（match location history）传递给组件 相当于法一传了参数props的形式
+                  // component={Page}
+
+                  // 法三：children
+                  children={props => <Page {...props} />}
+
+                // 注意：children写法优先于另外两种，因此不要再同一个<Route>中使用多个
                 >
-                  {/* 法二： */}
-                  <Page />
+                  {/* 法三的另一种写法： */}
+                  {/* <Page /> */}
                 </Route>
               );
             })
