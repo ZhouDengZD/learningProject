@@ -1,15 +1,40 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
-// import App from './App';
-import MobxPage from './MobxPage1';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from "react-router-dom";
+
 import reportWebVitals from './reportWebVitals';
 
+import routerData from './config/router.js';
+
+
 ReactDOM.render(
-  <React.StrictMode>
-    {/* <App /> */}
-    <MobxPage />
-  </React.StrictMode>,
+  <Router>
+    <React.StrictMode>
+      <Suspense fallback={<div style={{ textAlign: 'center' }}>Loading...</div>}>
+        <Switch>
+          {
+            routerData.map(routerItem => {
+              let Page = lazy(() => import(`./routes/${routerItem.component}`)); // 给匿名组件取名
+              return (
+                <Route
+                  exact
+                  path={routerItem.path} key={'router' + routerItem.path}
+                // render={() => <Page />}  // 法一
+                >
+                  {/* 法二： */}
+                  <Page />
+                </Route>
+              );
+            })
+          }
+        </Switch>
+      </Suspense>
+    </React.StrictMode>
+  </Router>,
   document.getElementById('root')
 );
 
