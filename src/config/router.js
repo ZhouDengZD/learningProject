@@ -35,4 +35,10 @@ module.exports = [
         component: "ReactRouter/Hooks.js",
         name: 'react-router-hooks 页面',
     },
+    {
+        path: '/about',
+        // 使用Switch的情况下，只有About匹配，User不会渲染，换成其他任意不匹配about的（比如/haha）,User才会渲染
+        component: "ReactRouter/Switch.js",
+        name: 'Switch 验证页面',
+    },
 ];
