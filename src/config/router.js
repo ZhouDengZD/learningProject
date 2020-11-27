@@ -24,4 +24,15 @@ module.exports = [
         component: "MobxPages/demo4.js",
         name: 'mobx-demo4 页面',
     },
+    // react-router
+    {
+        path: '/react-router',
+        component: "ReactRouter",
+        name: 'react-router 页面',
+    },
+    {
+        path: '/react-router/hooks',
+        component: "ReactRouter/Hooks.js",
+        name: 'react-router-hooks 页面',
+    },
 ];
