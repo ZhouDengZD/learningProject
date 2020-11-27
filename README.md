@@ -1,3 +1,6 @@
+# 项目使用Create React App搭建，做一些随意的学习实践，比如mobx, react-router...
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
